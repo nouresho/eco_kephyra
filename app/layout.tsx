@@ -1,6 +1,26 @@
+import type { Metadata } from "next";
+import { Archivo_Black, DM_Sans } from "next/font/google";
+
 import "./globals.css";
+
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+
+const archivoBlack = Archivo_Black({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-display",
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-body",
+});
+
+export const metadata: Metadata = {
+  title: "EKO KIVARA",
+  description: "Electric scooter rental",
+};
 
 export default function RootLayout({
   children,
@@ -8,11 +28,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr">
-      <body>
+    <html lang="en">
+      <body
+        className={`${archivoBlack.variable} ${dmSans.variable} bg-[#F3EFE7]`}
+      >
         <Header />
 
-        {children}
+        <main>{children}</main>
 
         <Footer />
       </body>
